@@ -201,7 +201,7 @@ public class DDFeAPI {
     }
 
 
-    //
+    //Faz a requisição de download de um lote de documentos
     public static String downloadLote(String CNPJInteressado, String caminho, String tpAmb, String ultNSU, String modelo,
                                       boolean apenasPendManif, boolean incluirPdf, boolean apenasComXml, boolean comEventos) throws IOException {
 
@@ -240,6 +240,7 @@ public class DDFeAPI {
 
     }
 
+    // Trata o retorno da API apos uma requisição de download em lote de DFes
     private static void tratamentoDownloadLote(String caminho, boolean incluirPdf, String jsonRetorno, ObjectMapper objectMapper) throws IOException {
 
         JsonNode respostaJSON = objectMapper.readTree(jsonRetorno);
@@ -252,6 +253,7 @@ public class DDFeAPI {
         }
     }
 
+    //Faz o download local dos xmls e/ou pdfs dos documentos requisitados
     private static String downloadDocsLote(String caminho, boolean incluirPdf, String jsonRetorno, ObjectMapper objectMapper) throws IOException {
         String xml;
         String chave;
