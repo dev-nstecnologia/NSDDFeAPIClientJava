@@ -27,7 +27,7 @@ import javax.ws.rs.core.Response;
 
 public class DDFeAPI {
 
-    private static String token = "THVjaWFuZSBBbG1laWRhOUFhNG4=";
+    private static String token = "COLOQUE_TOKEN";
 
     // Esta função envia um conteúdo para uma URL, em requisições do tipo POST
     private static String enviaConteudoParaAPI(Object conteudo, String url) {
