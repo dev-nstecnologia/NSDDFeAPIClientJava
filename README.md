@@ -1,4 +1,4 @@
-#NSDDFeAPIClientJava
+# NSDDFeAPIClientJava
 
 ## Introdução:
 
@@ -25,7 +25,7 @@ Para utilizar as funções de comunicação com a API, você precisa realizar os
 
 Para realizar uma manifestação de um documento emitido contra o CNPJ do seu cliente ou seu, você poderá utilizar a função manifestacao da classe DDFeAPI. Veja abaixo sobre os parâmetros necessários, e um exemplo de chamada do método.
 
-##### Parâmetros:
+#### Parâmetros:
 
 ATENÇÃO: o token também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
 
@@ -40,7 +40,7 @@ xJust           | Justificativa da manifestação (Informar somente quando o tpE
 chave           | Chave do DF-e que deseja-se manifestar
 
 
-##### Exemplo de chamada:
+#### Exemplo de chamada:
 
 Após ter todos os parâmetros listados acima, você deverá fazer a chamada da função. Veja o código de exemplo abaixo:
     
@@ -61,7 +61,7 @@ A função manifestacao fará o envio da confirmação de participação do dest
 
 Para realizar um download de um unico documento, você poderá utilizar a função downloadUnico da classe DDFeAPI. Veja abaixo sobre os parâmetros necessários, e um exemplo de chamada do método.
 
-##### Parâmetros:
+#### Parâmetros:
 
 ATENÇÃO: o token também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
 
@@ -79,7 +79,7 @@ incluirPdf      | Incluir do documento auxiliar
 apenasComXml    | Carregar apenas documentos com XMLs disponíveis
 comEventos      | Incluir eventos vinculados ao documento disponíveis
 
-##### Exemplo de chamada:
+#### Exemplo de chamada:
 
 Após ter todos os parâmetros listados acima, você deverá fazer a chamada da função. Veja o código de exemplo abaixo:
 
@@ -100,7 +100,7 @@ A função downloadUnico fará o envio de um json para API fazendo com que o doc
 
 Para realizar um download de lote de documentos, você poderá utilizar a função downloadLote da classe DDFeAPI. Veja abaixo sobre os parâmetros necessários, e um exemplo de chamada do método.
 
-##### Parâmetros:
+#### Parâmetros:
 
 ATENÇÃO: o token também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
 
@@ -118,7 +118,7 @@ incluirPdf      | Incluir do documento auxiliar
 apenasComXml    | Carregar apenas documentos com XMLs disponíveis
 comEventos      | Incluir eventos vinculados ao documento disponíveis
 
-##### Exemplo de chamada:
+#### Exemplo de chamada:
 
 Após ter todos os parâmetros listados acima, você deverá fazer a chamada da função. Veja o código de exemplo abaixo:
 
