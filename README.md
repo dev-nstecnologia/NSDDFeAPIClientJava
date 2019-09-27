@@ -2,6 +2,8 @@
 
 ## Introdução:
 
+Esta documentação apresenta trechos de códigos de uma classe em Java que foi desenvolvida para consumir as funcionalidades da NS DDF-e API. Você pode realizar o download da classe e de uma aplicação de exemplo clicando na imagem abaixo:
+
 -----
 
 ## Integrando ao sistema:
@@ -27,7 +29,7 @@ Para realizar uma manifestação de um documento emitido contra o CNPJ do seu cl
 
 ATENÇÃO: o token também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
 
-![dependency](https://confluence.ns.eti.br/download/attachments/25690625/image2019-3-18%208%3A27%3A54.png?version=1&modificationDate=1552909202040&api=v2)
+![dependency](https://confluence.ns.eti.br/download/attachments/28412399/image2019-9-26%2016%3A15%3A0.png?version=1&modificationDate=1569525777299&api=v2)
 
 Parametros     | Descrição
 :-------------:|:-----------
@@ -63,7 +65,7 @@ Para realizar um download de um unico documento, você poderá utilizar a funç�
 
 ATENÇÃO: o token também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
 
-![dependency](https://confluence.ns.eti.br/download/attachments/25690625/image2019-3-18%208%3A27%3A54.png?version=1&modificationDate=1552909202040&api=v2)
+![dependency](https://confluence.ns.eti.br/download/attachments/28412399/image2019-9-26%2016%3A15%3A0.png?version=1&modificationDate=1569525777299&api=v2)
 
 Parametros      | Descrição
 :-------------: |:-----------
@@ -102,7 +104,7 @@ Para realizar um download de lote de documentos, você poderá utilizar a funç�
 
 ATENÇÃO: o token também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
 
-![dependency](https://confluence.ns.eti.br/download/attachments/25690625/image2019-3-18%208%3A27%3A54.png?version=1&modificationDate=1552909202040&api=v2)
+![dependency](https://confluence.ns.eti.br/download/attachments/28412399/image2019-9-26%2016%3A15%3A0.png?version=1&modificationDate=1569525777299&api=v2)
 
 Parametros      | Descrição
 :-------------: |:-----------
