@@ -27,7 +27,8 @@ public class Main {
 
         */
 
-
+        String resposta = DDFeAPI.downloadLote("07364617000135", "C:\\Notas\\", "2", 0, "55",
+                false, false, true, false);
     }
 }
 

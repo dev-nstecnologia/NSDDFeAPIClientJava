@@ -27,7 +27,7 @@ Para realizar uma manifestação de um documento emitido contra o CNPJ do seu cl
 
 #### Parâmetros:
 
-ATENÇÃO: o token também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
+ATENÇÃO: o **token** também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
 
 ![dependency](https://confluence.ns.eti.br/download/attachments/28412399/image2019-9-26%2016%3A15%3A0.png?version=1&modificationDate=1569525777299&api=v2)
 
@@ -63,7 +63,7 @@ Para realizar um download de um unico documento, você poderá utilizar a funç�
 
 #### Parâmetros:
 
-ATENÇÃO: o token também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
+ATENÇÃO: o **token** também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
 
 ![dependency](https://confluence.ns.eti.br/download/attachments/28412399/image2019-9-26%2016%3A15%3A0.png?version=1&modificationDate=1569525777299&api=v2)
 
@@ -102,7 +102,7 @@ Para realizar um download de lote de documentos, você poderá utilizar a funç�
 
 #### Parâmetros:
 
-ATENÇÃO: o token também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
+ATENÇÃO: o **token** também é um parâmetro necessário, e você deve primeiramente defini-lo na classe DDFeAPI.java. Verifique os parâmetros da classe.
 
 ![dependency](https://confluence.ns.eti.br/download/attachments/28412399/image2019-9-26%2016%3A15%3A0.png?version=1&modificationDate=1569525777299&api=v2)
 

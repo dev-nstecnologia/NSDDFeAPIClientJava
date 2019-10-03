@@ -27,7 +27,7 @@ import javax.ws.rs.core.Response;
 
 public class DDFeAPI {
 
-    private static String token = "COLOQUE_TOKEN";
+    private static String token = "4EB15D6DEDAEBAE3FD0B7B5E5B0AD6D4";
 
     // Esta função envia um conteúdo para uma URL, em requisições do tipo POST
     private static String enviaConteudoParaAPI(Object conteudo, String url) {
@@ -133,76 +133,14 @@ public class DDFeAPI {
         gravaLinhaLog("[DOWNLOAD_UNICO_RESPOSTA]");
         gravaLinhaLog(resposta);
 
-        tratamentoDownloadUnico(caminho, incluirPdf, resposta, objectMapper);
+        salvarDocs(caminho, incluirPdf, resposta, objectMapper);
 
         return resposta;
     }
 
-    //
-    private static void tratamentoDownloadUnico(String caminho, boolean incluirPdf, String jsonRetorno, ObjectMapper objectMapper) throws IOException {
-
-        JsonNode respostaJSON = objectMapper.readTree(jsonRetorno);
-        String status = respostaJSON.get("status").asText();
-
-        if (status.equals("200")) {
-            downloadDocUnico(caminho, incluirPdf, jsonRetorno, objectMapper);
-            JOptionPane.showMessageDialog(null, "Donwload Unico feito com sucesso!!!");
-        } else {
-            JOptionPane.showMessageDialog(null, respostaJSON.get("motivo").asText());
-        }
-    }
-
-    //
-    private static void downloadDocUnico(String caminho, boolean incluirPdf, String jsonRetorno, ObjectMapper objectMapper) throws IOException {
-        String xml;
-        String chave;
-        String modelo;
-        String pdf;
-        String tpEvento;
-
-        JsonNode respostaJSON = objectMapper.readTree(jsonRetorno);
-        boolean listaDocs = respostaJSON.get("listaDocs").asBoolean();
-
-        if (!listaDocs) {
-            xml = respostaJSON.get("xml").asText();
-            chave = respostaJSON.get("chave").asText();
-            modelo = respostaJSON.get("modelo").asText();
-            salvarXML(xml, caminho, chave, modelo, "");
-            if (incluirPdf) {
-                pdf = respostaJSON.get("pdf").asText();
-                salvarPDF(pdf, caminho, chave, modelo, "");
-            }
-        } else {
-            JsonNode arrayDocs = respostaJSON.get("xmls");
-            if (arrayDocs.isArray()) {
-                for (final JsonNode itemDoc : arrayDocs) {
-                    xml = itemDoc.get("xml").asText();
-
-                    if (!xml.equals("")) {
-                        chave = itemDoc.get("chave").asText();
-                        modelo = itemDoc.get("modelo").asText();
-
-                        if (itemDoc.hasNonNull("tpEvento")){
-                            tpEvento = itemDoc.get("tpEvento").asText();
-                        } else {
-                            tpEvento = "";
-                        }
-
-                        salvarXML(xml, caminho, chave, modelo, tpEvento);
-
-                        if (incluirPdf) {
-                            pdf = itemDoc.get("pdf").asText();
-                            salvarPDF(pdf, caminho, chave, modelo, tpEvento);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
 
     //Faz a requisição de download de um lote de documentos
-    public static String downloadLote(String CNPJInteressado, String caminho, String tpAmb, String ultNSU, String modelo,
+    public static String downloadLote(String CNPJInteressado, String caminho, String tpAmb, int ultNSU, String modelo,
                                       boolean apenasPendManif, boolean incluirPdf, boolean apenasComXml, boolean comEventos) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -234,62 +172,77 @@ public class DDFeAPI {
         gravaLinhaLog("[DOWNLOAD_LOTE_RESPOSTA]");
         gravaLinhaLog(resposta);
 
-        tratamentoDownloadLote(caminho, incluirPdf, resposta, objectMapper);
+        salvarDocs(caminho, incluirPdf, resposta, objectMapper);
 
         return resposta;
 
     }
 
-    // Trata o retorno da API apos uma requisição de download em lote de DFes
-    private static void tratamentoDownloadLote(String caminho, boolean incluirPdf, String jsonRetorno, ObjectMapper objectMapper) throws IOException {
-
-        JsonNode respostaJSON = objectMapper.readTree(jsonRetorno);
-        String status = respostaJSON.get("status").asText();
-
-        if (status.equals("200")) {
-            JOptionPane.showInputDialog(downloadDocsLote(caminho, incluirPdf, jsonRetorno, objectMapper));
-        } else {
-            JOptionPane.showInputDialog(respostaJSON.get("motivo").asText());
-        }
-    }
 
     //Faz o download local dos xmls e/ou pdfs dos documentos requisitados
-    private static String downloadDocsLote(String caminho, boolean incluirPdf, String jsonRetorno, ObjectMapper objectMapper) throws IOException {
+    private static void salvarDocs(String caminho, boolean incluirPdf, String jsonRetorno, ObjectMapper objectMapper) throws IOException {
+        String resposta;
         String xml;
         String chave;
         String modelo;
         String pdf;
         String tpEvento;
+        boolean listaDocs;
 
         JsonNode respostaJSON = objectMapper.readTree(jsonRetorno);
+        String status = respostaJSON.get("status").asText();
 
+        if (status.equals("200")) {
 
-        JsonNode arrayDocs = respostaJSON.get("xmls");
+            if (respostaJSON.hasNonNull("listaDocs")){
+                listaDocs = respostaJSON.get("listaDocs").asBoolean();
+            }else{
+                listaDocs = true;
+            }
 
-            for (final JsonNode itemDoc : arrayDocs) {
-                xml = itemDoc.get("xml").asText();
+            if (!listaDocs) {
+                xml = respostaJSON.get("xml").asText();
+                chave = respostaJSON.get("chave").asText();
+                modelo = respostaJSON.get("modelo").asText();
+                salvarXML(xml, caminho, chave, modelo, "");
+                if (incluirPdf) {
+                    pdf = respostaJSON.get("pdf").asText();
+                    salvarPDF(pdf, caminho, chave, modelo, "");
+                }
+            } else {
+                JsonNode arrayDocs = respostaJSON.get("xmls");
+                if (arrayDocs.isArray()) {
+                    for (final JsonNode itemDoc : arrayDocs) {
+                        xml = itemDoc.get("xml").asText();
 
-                if (!xml.equals("")) {
-                    chave = itemDoc.get("chave").asText();
-                    modelo = itemDoc.get("modelo").asText();
+                        if (!xml.isEmpty()) {
+                            chave = itemDoc.get("chave").asText();
+                            modelo = itemDoc.get("modelo").asText();
 
-                    if (itemDoc.hasNonNull("tpEvento")){
-                        tpEvento = itemDoc.get("tpEvento").asText();
-                    } else {
-                        tpEvento = "";
-                    }
+                            if (itemDoc.hasNonNull("tpEvento")){
+                                tpEvento = itemDoc.get("tpEvento").asText();
+                            } else {
+                                tpEvento = "";
+                            }
 
-                    salvarXML(xml, caminho, chave, modelo, tpEvento);
+                            salvarXML(xml, caminho, chave, modelo, tpEvento);
 
-                    if (incluirPdf) {
-                        pdf = itemDoc.get("pdf").asText();
-                        salvarPDF(pdf, caminho, chave, modelo, tpEvento);
+                            if (incluirPdf) {
+                                pdf = itemDoc.get("pdf").asText();
+                                salvarPDF(pdf, caminho, chave, modelo, tpEvento);
+                            }
+                        }
                     }
                 }
             }
-        return respostaJSON.get("ultNSU").asText();
+            resposta = respostaJSON.hasNonNull("ultNSU") ?
+                    "Ultimo NSU:" + respostaJSON.get("ultNSU").asText() :
+                    "Donwload Unico feito com sucesso!!!";
+        } else {
+            resposta = respostaJSON.get("motivo").asText();
+        }
+        JOptionPane.showMessageDialog(null, resposta);
     }
-
 
     // Esta função salva um XML
     private static void salvarXML(String xml, String caminho, String chave, String modelo, String tpEvento) throws IOException{
@@ -437,7 +390,7 @@ public class DDFeAPI {
     //Download Lote
     public static class DownloadLoteJSON {
         public String CNPJInteressado = null;
-        public String ultNSU = null;
+        public int ultNSU;
         public String modelo = null;
         public String tpAmb = null;
         public boolean apenasPendManif = false;
