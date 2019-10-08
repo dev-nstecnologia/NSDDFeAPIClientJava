@@ -27,7 +27,7 @@ import javax.ws.rs.core.Response;
 
 public class DDFeAPI {
 
-    private static String token = "4EB15D6DEDAEBAE3FD0B7B5E5B0AD6D4";
+    private static String token = "COLOQUE_TOKEN";
 
     // Esta função envia um conteúdo para uma URL, em requisições do tipo POST
     private static String enviaConteudoParaAPI(Object conteudo, String url) {
@@ -140,17 +140,24 @@ public class DDFeAPI {
 
 
     //Faz a requisição de download de um lote de documentos
-    public static String downloadLote(String CNPJInteressado, String caminho, String tpAmb, int ultNSU, String modelo,
-                                      boolean apenasPendManif, boolean incluirPdf, boolean apenasComXml, boolean comEventos) throws IOException {
+    public static String downloadLote(String CNPJInteressado, String caminho, String tpAmb, String ultNSU, String dhInicial,
+                                      String dhFinal, String modelo, boolean apenasPendManif, boolean incluirPdf,
+                                      boolean apenasComXml, boolean comEventos) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
         DownloadLoteJSON parametros = new DownloadLoteJSON();
 
         parametros.CNPJInteressado = CNPJInteressado;
-        parametros.ultNSU = ultNSU;
         parametros.modelo = modelo;
         parametros.tpAmb = tpAmb;
         parametros.incluirPDF = incluirPdf;
+
+        if (ultNSU.isEmpty()) {
+            parametros.dhInicial = dhInicial;
+            parametros.dhFinal = dhFinal;
+        }else{
+            parametros.ultNSU = Integer.parseInt(ultNSU);
+        }
 
         if (!apenasPendManif) {
             parametros.apenasComXml = apenasComXml;
@@ -391,6 +398,8 @@ public class DDFeAPI {
     public static class DownloadLoteJSON {
         public String CNPJInteressado = null;
         public int ultNSU;
+        public String dhInicial = null;
+        public String dhFinal = null;
         public String modelo = null;
         public String tpAmb = null;
         public boolean apenasPendManif = false;

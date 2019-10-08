@@ -18,17 +18,14 @@ public class Main {
 
 
             - Aqui um exemplo de chamada de download de lote de documentos
-              (somente pode ser feito pelo ultimo NSU):
+              (pode ser feito tanto pelo ultimo NSU ou pela data inicial e final):
 
-                * String resposta = DDFeAPI.downloadLote(CNPJInteressado, caminho, tpAmb, ultNSU, modelo,
+                * String resposta = DDFeAPI.downloadLote(CNPJInteressado, caminho, tpAmb, ultNSU, dhInicial, dhFInalmodelo,
                                       apenasPendManif, incluirPdf, apenasComXml, comEventos);
 
             Para maiores informações, consulte a documentação no link: https://confluence.ns.eti.br/display/PUB/JAVA+-+DDF-e+API, e entre em contato com a equipe de integração
 
         */
-
-        String resposta = DDFeAPI.downloadLote("07364617000135", "C:\\Notas\\", "2", 0, "55",
-                false, false, true, false);
     }
 }
 
