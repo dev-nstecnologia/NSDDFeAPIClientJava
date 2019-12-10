@@ -13,9 +13,7 @@ Para utilizar as funções de comunicação com a API, você precisa realizar os
 1. Extraia o conteúdo da pasta compactada que você baixou;
 2. Copie para sua aplicação a pasta src, na qual contem todos as classes que serão utilizadas;
 3. Abra o seu projeto e importe a pasta copiada.
-4. A aplicação utiliza as bibliotecas <strong>jersey-client</strong> e <strong>jackson-databind</strong> para realizar a comunicação com a API e fazer a manipulação de dados JSON, respectivamente. Ative as duas referencias em seu projeto, como mostrado abaixo:
-
-![dependency](https://confluence.ns.eti.br/download/attachments/25690610/image2019-3-18%208%3A24%3A8.png?version=1&modificationDate=1552908140508&api=v2)
+4. A aplicação utiliza as bibliotecas <strong>jersey-client</strong> e <strong>jackson-databind</strong> para realizar a comunicação com a API e fazer a manipulação de dados JSON, respectivamente. Ative as duas referencias em seu projeto.
 
 **Pronto!** Agora, você já pode consumir a NS DDFe API através do seu sistema. Todas as funcionalidades de comunicação foram implementadas na classe **DDFeAPI.java**.
 
@@ -28,8 +26,6 @@ Para realizar uma manifestação de um documento emitido contra o CNPJ do seu cl
 #### Parâmetros:
 
 ATENÇÃO: o **token** também é um parâmetro necessário, e você deve primeiramente defini-lo na classe **DDFeAPI.java**. Verifique os parâmetros da classe.
-
-![dependency](https://confluence.ns.eti.br/download/attachments/28412399/image2019-9-26%2016%3A15%3A0.png?version=1&modificationDate=1569525777299&api=v2)
 
 Parametros     | Descrição
 :-------------:|:-----------
@@ -64,8 +60,6 @@ Para realizar um download de um unico documento, você poderá utilizar a funç�
 #### Parâmetros:
 
 ATENÇÃO: o **token** também é um parâmetro necessário, e você deve primeiramente defini-lo na classe **DDFeAPI.java**. Verifique os parâmetros da classe.
-
-![dependency](https://confluence.ns.eti.br/download/attachments/28412399/image2019-9-26%2016%3A15%3A0.png?version=1&modificationDate=1569525777299&api=v2)
 
 Parametros      | Descrição
 :-------------: |:-----------
@@ -103,8 +97,6 @@ Para realizar um download de lote de documentos, você poderá utilizar a funç�
 #### Parâmetros:
 
 ATENÇÃO: o **token** também é um parâmetro necessário, e você deve primeiramente defini-lo na classe **DDFeAPI.java**. Verifique os parâmetros da classe.
-
-![dependency](https://confluence.ns.eti.br/download/attachments/28412399/image2019-9-26%2016%3A15%3A0.png?version=1&modificationDate=1569525777299&api=v2)
 
 Parametros      | Descrição
 :-------------: |:-----------
